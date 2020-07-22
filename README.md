@@ -1,24 +1,26 @@
-# RandomNumberGame
 import random
-number = random.randint(1, 9)
 print("Welcome to Guess Game!!")
-guess= int(input('Enter Your Guess Number between 1 and 9:'))
+guess = int(input('Enter Your Guess Number between 1 and 9:'))
+
 try:
-    while guess>9 or guess<1:
-        print("enter the number between 1 and 9")
-        guess = int(input("enter your number:"))
-    while guess != number:
-        print('Your Guess is WRONG!')
-        if guess > number:
+    def guessGame(num,gu):
+      if num==gu:
+        print('Your Guess is CORRECT!')
+        guess=int(input('Try Again! Enter Your Guess Number between 1 and 9:'))
+        return guess
+      else:
+         print('Your Guess is WRONG!')
+         if gu > num:
             print('Guessed number is Too High')
-        elif guess < number:
+         elif gu < num:
             print('Guessed number is too Low')
-        guess =int(input('Enter Your Guess Number between 1 and 9:'))
-    if guess == number:
-            print('your Guess is Correct!','Game completed')
+         guess=int(input('Try Again! Enter Your Guess Number between 1 and 9:'))
+         return guess    
+    while guess > 0 and guess<10:
+        number=random.randint(1, 9)
+        guess=guessGame(number,guess)
 except ValueError:
-    string=str(guess)
-    if str == 'exit':
+    if guess=='exit':
         print('You Have Successfully exit from the game')
     else:
-        print('Enter the valid number')
+        print('Enter the valid input')        
